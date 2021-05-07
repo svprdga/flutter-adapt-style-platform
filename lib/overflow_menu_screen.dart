@@ -12,7 +12,6 @@ class OverflowMenuScreen extends StatefulWidget {
 }
 
 class _OverflowMenuScreenState extends State<OverflowMenuScreen> {
-  // ****************************** LIFECYCLE ****************************** //
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class _OverflowMenuScreenState extends State<OverflowMenuScreen> {
         child: Container(
           padding: EdgeInsets.all(36.0),
           child: Text(
-            'Click in the overflow button in the top bar, '
+            'Click on the overflow button in the top bar, '
             'its style will adapt to the platform.',
             textAlign: TextAlign.center,
           ),
@@ -34,8 +33,6 @@ class _OverflowMenuScreenState extends State<OverflowMenuScreen> {
       ),
     );
   }
-
-  // *************************** PRIVATE METHODS *************************** //
 
   MaterialAppBarData _getMaterialBar() {
     return MaterialAppBarData(actions: [

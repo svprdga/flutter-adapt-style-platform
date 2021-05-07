@@ -13,7 +13,6 @@ class SelectorScreen extends StatefulWidget {
 }
 
 class _SelectorScreenState extends State<SelectorScreen> {
-  // ****************************** LIFECYCLE ****************************** //
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +57,6 @@ class _SelectorScreenState extends State<SelectorScreen> {
       ),
     );
   }
-
-  // *************************** PRIVATE METHODS *************************** //
 
   _goToScreen(Widget screen) {
     Navigator.push(

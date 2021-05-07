@@ -10,7 +10,6 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  // ********************************* VARS ******************************** //
 
   int _index = 0;
 
@@ -20,8 +19,6 @@ class _TabsScreenState extends State<TabsScreen> {
         icon: Icon(Icons.account_circle_rounded), label: 'Tab B'),
   ];
 
-  // ****************************** LIFECYCLE ****************************** //
-
   @override
   Widget build(BuildContext context) {
     if (isMaterial(context)) {
@@ -30,8 +27,6 @@ class _TabsScreenState extends State<TabsScreen> {
       return _getCupertinoWidget(context);
     }
   }
-
-  // *************************** PRIVATE METHODS *************************** //
 
   Widget _getMaterialWidget() {
     return Scaffold(
