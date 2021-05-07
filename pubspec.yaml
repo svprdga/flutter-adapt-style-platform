@@ -1,0 +1,22 @@
+name: flutter_adapt_style_platform
+description: A Flutter sample project to demonstrate how to adapt the app style to the current platform.
+publish_to: 'none'
+version: 1.0.0+1
+authors:
+  - David Serrano Canales <svprdg>
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_platform_widgets: ^1.7.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
