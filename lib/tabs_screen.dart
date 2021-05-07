@@ -10,39 +10,33 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  
   // ********************************* VARS ******************************** //
-  
+
   int _index = 0;
-  
+
   final _items = [
+    BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Tab A'),
     BottomNavigationBarItem(
-        icon: Icon(Icons.list),
-        label: 'Tab A'
-    ),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.account_circle_rounded),
-        label: 'Tab B'
-    ),
+        icon: Icon(Icons.account_circle_rounded), label: 'Tab B'),
   ];
-  
+
   // ****************************** LIFECYCLE ****************************** //
-  
+
   @override
   Widget build(BuildContext context) {
     if (isMaterial(context)) {
       return _getMaterialWidget();
     } else {
-      return _getCupertinoWidget();
+      return _getCupertinoWidget(context);
     }
   }
-  
+
   // *************************** PRIVATE METHODS *************************** //
 
   Widget _getMaterialWidget() {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tabs Screen'),  
+        title: Text('Tabs Screen'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _items,
@@ -56,8 +50,8 @@ class _TabsScreenState extends State<TabsScreen> {
       body: _getCurrentTab(_index),
     );
   }
-  
-  Widget _getCupertinoWidget() {
+
+  Widget _getCupertinoWidget(BuildContext mainContext) {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
         onTap: (int index) {
@@ -71,6 +65,9 @@ class _TabsScreenState extends State<TabsScreen> {
         return CupertinoTabView(
           builder: (BuildContext context) => CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
+              leading: CupertinoNavigationBarBackButton(
+                onPressed: () => Navigator.of(mainContext).pop(),
+              ),
               middle: Text('Tabs Screen'),
             ),
             child: _getCurrentTab(index),
@@ -79,11 +76,10 @@ class _TabsScreenState extends State<TabsScreen> {
       },
     );
   }
-  
+
   Widget _getCurrentTab(int index) {
     return Center(
       child: Text('Tab ${index == 0 ? 'A' : 'B'}'),
     );
   }
-
 }

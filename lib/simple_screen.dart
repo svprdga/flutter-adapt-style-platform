@@ -40,7 +40,7 @@ class _SimpleScreenState extends State<SimpleScreen> {
         builder: (BuildContext context) {
           return PlatformAlertDialog(
             content:
-                Text('The style of this dialog is adapted to the platform.'),
+            Text('The style of this dialog is adapted to the platform.'),
             actions: [
               PlatformDialogAction(
                 child: Text('OK'),
