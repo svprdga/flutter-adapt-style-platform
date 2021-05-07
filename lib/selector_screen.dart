@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_adapt_style_platform/overflow_menu_screen.dart';
 import 'package:flutter_adapt_style_platform/simple_screen.dart';
+import 'package:flutter_adapt_style_platform/styles.dart';
 import 'package:flutter_adapt_style_platform/tabs_screen.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -18,7 +19,10 @@ class _SelectorScreenState extends State<SelectorScreen> {
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text('Selector Screen'),
+        title: Text('Selector Screen', style: TextStyle(color: Colors.white),),
+        cupertino: (_,__) => CupertinoNavigationBarData(
+          backgroundColor: materialTheme.primaryColor
+        ),
       ),
       body: Center(
         child: IntrinsicHeight(
@@ -26,12 +30,16 @@ class _SelectorScreenState extends State<SelectorScreen> {
             children: [
               PlatformButton(
                 child: Text('Open simple screen'),
+                material: (_, __) => materialRaisedButtonData,
+                cupertinoFilled: (_, __) => cupertinoFilledButtonData,
                 onPressed: () => _goToScreen(SimpleScreen()),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.0),
                 child: PlatformButton(
                   child: Text('Open overflow menu sample'),
+                  material: (_, __) => materialRaisedButtonData,
+                  cupertinoFilled: (_, __) => cupertinoFilledButtonData,
                   onPressed: () => _goToScreen(OverflowMenuScreen()),
                 ),
               ),
@@ -39,6 +47,8 @@ class _SelectorScreenState extends State<SelectorScreen> {
                 padding: EdgeInsets.only(top: 20.0),
                 child: PlatformButton(
                   child: Text('Open tabs sample'),
+                  material: (_, __) => materialRaisedButtonData,
+                  cupertinoFilled: (_, __) => cupertinoFilledButtonData,
                   onPressed: () => _goToScreen(TabsScreen()),
                 ),
               )
