@@ -9,7 +9,6 @@ class SimpleScreen extends StatefulWidget {
 }
 
 class _SimpleScreenState extends State<SimpleScreen> {
-  // ****************************** LIFECYCLE ****************************** //
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,6 @@ class _SimpleScreenState extends State<SimpleScreen> {
       ),
     );
   }
-
-  // *************************** PRIVATE METHODS *************************** //
 
   _showDialog() {
     showPlatformDialog(
