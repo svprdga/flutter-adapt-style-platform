@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_adapt_style_platform/styles.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 enum Overflow { OPTION_A, OPTION_B }
@@ -12,12 +13,14 @@ class OverflowMenuScreen extends StatefulWidget {
 }
 
 class _OverflowMenuScreenState extends State<OverflowMenuScreen> {
-
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text('Overflow menu'),
+        title: Text(
+          'Overflow menu',
+          style: TextStyle(color: Colors.white),
+        ),
         material: (_, __) => _getMaterialBar(),
         cupertino: (_, __) => _getCupertinoBar(),
       ),
@@ -55,34 +58,36 @@ class _OverflowMenuScreenState extends State<OverflowMenuScreen> {
           // Perform action.
         },
       )
-    ]);
+    ], brightness: materialBarData.brightness);
   }
 
   CupertinoNavigationBarData _getCupertinoBar() {
     return CupertinoNavigationBarData(
         trailing: CupertinoButton(
-      padding: EdgeInsets.zero,
-      child: Icon(CupertinoIcons.ellipsis, color: Colors.black87),
-      onPressed: () => showCupertinoModalPopup(
-          context: context,
-          builder: (BuildContext context) => CupertinoActionSheet(
-                actions: [
-                  CupertinoActionSheetAction(
-                    child: Text('Option A'),
-                    onPressed: () {
-                      // Perform action.
-                      Navigator.pop(context);
-                    },
-                  ),
-                  CupertinoActionSheetAction(
-                    child: Text('Option B'),
-                    onPressed: () {
-                      // Perform action.
-                      Navigator.pop(context);
-                    },
-                  )
-                ],
-              )),
-    ));
+          padding: EdgeInsets.zero,
+          child: Icon(CupertinoIcons.ellipsis, color: Colors.white),
+          onPressed: () => showCupertinoModalPopup(
+              context: context,
+              builder: (BuildContext context) => CupertinoActionSheet(
+                    actions: [
+                      CupertinoActionSheetAction(
+                        child: Text('Option A'),
+                        onPressed: () {
+                          // Perform action.
+                          Navigator.pop(context);
+                        },
+                      ),
+                      CupertinoActionSheetAction(
+                        child: Text('Option B'),
+                        onPressed: () {
+                          // Perform action.
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
+                  )),
+        ),
+        backgroundColor: cupertinoBarData.backgroundColor,
+        brightness: cupertinoBarData.brightness);
   }
 }

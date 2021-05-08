@@ -14,7 +14,6 @@ class SelectorScreen extends StatefulWidget {
 }
 
 class _SelectorScreenState extends State<SelectorScreen> {
-
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
@@ -23,8 +22,8 @@ class _SelectorScreenState extends State<SelectorScreen> {
           'Selector Screen',
           style: TextStyle(color: Colors.white),
         ),
-        cupertino: (_, __) => CupertinoNavigationBarData(
-            backgroundColor: materialTheme.primaryColor),
+        material: (_, __) => materialBarData,
+        cupertino: (_, __) => cupertinoBarData,
       ),
       body: Center(
         child: IntrinsicHeight(

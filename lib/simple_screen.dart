@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_adapt_style_platform/styles.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class SimpleScreen extends StatefulWidget {
@@ -9,12 +10,16 @@ class SimpleScreen extends StatefulWidget {
 }
 
 class _SimpleScreenState extends State<SimpleScreen> {
-
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text('Sample Screen'),
+        title: Text(
+          'Sample Screen',
+          style: TextStyle(color: Colors.white),
+        ),
+        material: (_, __) => materialBarData,
+        cupertino: (_, __) => cupertinoBarData,
       ),
       body: Center(
         child: IntrinsicHeight(
@@ -37,7 +42,7 @@ class _SimpleScreenState extends State<SimpleScreen> {
         builder: (BuildContext context) {
           return PlatformAlertDialog(
             content:
-            Text('The style of this dialog is adapted to the platform.'),
+                Text('The style of this dialog is adapted to the platform.'),
             actions: [
               PlatformDialogAction(
                 child: Text('OK'),

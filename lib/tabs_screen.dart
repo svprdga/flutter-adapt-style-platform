@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_adapt_style_platform/styles.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -10,7 +11,6 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-
   int _index = 0;
 
   final _items = [
@@ -32,6 +32,7 @@ class _TabsScreenState extends State<TabsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tabs Screen'),
+        brightness: materialBarData.brightness,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _items,
@@ -60,10 +61,15 @@ class _TabsScreenState extends State<TabsScreen> {
         return CupertinoTabView(
           builder: (BuildContext context) => CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
+              backgroundColor: cupertinoBarData.backgroundColor,
+              brightness: cupertinoBarData.brightness,
               leading: CupertinoNavigationBarBackButton(
                 onPressed: () => Navigator.of(mainContext).pop(),
               ),
-              middle: Text('Tabs Screen'),
+              middle: Text(
+                'Tabs Screen',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             child: _getCurrentTab(index),
           ),
