@@ -9,8 +9,10 @@ class App extends StatelessWidget {
     return PlatformProvider(
         builder: (BuildContext context) => PlatformApp(
             title: 'Flutter platform style sample',
-            material: (_, __) => MaterialAppData(theme: materialTheme),
-            cupertino: (_, __) => CupertinoAppData(theme: cupertinoTheme),
+            material: (_, __) => MaterialAppData(
+                theme: materialTheme, debugShowCheckedModeBanner: false),
+            cupertino: (_, __) => CupertinoAppData(
+                theme: cupertinoTheme, debugShowCheckedModeBanner: false),
             home: SelectorScreen()));
   }
 }

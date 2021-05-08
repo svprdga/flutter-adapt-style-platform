@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_adapt_style_platform/overflow_menu_screen.dart';
 import 'package:flutter_adapt_style_platform/simple_screen.dart';
@@ -13,26 +14,55 @@ class SelectorScreen extends StatefulWidget {
 }
 
 class _SelectorScreenState extends State<SelectorScreen> {
-  // ****************************** LIFECYCLE ****************************** //
 
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
       appBar: PlatformAppBar(
-        title: Text('Selector Screen', style: TextStyle(color: Colors.white),),
-        cupertino: (_,__) => CupertinoNavigationBarData(
-          backgroundColor: materialTheme.primaryColor
+        title: Text(
+          'Selector Screen',
+          style: TextStyle(color: Colors.white),
         ),
+        cupertino: (_, __) => CupertinoNavigationBarData(
+            backgroundColor: materialTheme.primaryColor),
       ),
       body: Center(
         child: IntrinsicHeight(
           child: Column(
             children: [
               PlatformButton(
-                child: Text('Open simple screen'),
                 material: (_, __) => materialRaisedButtonData,
                 cupertinoFilled: (_, __) => cupertinoFilledButtonData,
-                onPressed: () => _goToScreen(SimpleScreen()),
+                child: IntrinsicWidth(
+                  child: Row(
+                    children: [
+                      PlatformWidgetBuilder(
+                        material: (_, child, __) => Icon(Icons.swap_horiz),
+                        cupertino: (_, child, __) =>
+                            Icon(CupertinoIcons.arrow_swap),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(left: 10.0),
+                          child: Text('Swap style'))
+                    ],
+                  ),
+                ),
+                onPressed: () {
+                  if (isMaterial(context)) {
+                    PlatformProvider.of(context)?.changeToCupertinoPlatform();
+                  } else {
+                    PlatformProvider.of(context)?.changeToMaterialPlatform();
+                  }
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 40.0),
+                child: PlatformButton(
+                  child: Text('Open simple screen'),
+                  material: (_, __) => materialRaisedButtonData,
+                  cupertinoFilled: (_, __) => cupertinoFilledButtonData,
+                  onPressed: () => _goToScreen(SimpleScreen()),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.0),
@@ -58,8 +88,6 @@ class _SelectorScreenState extends State<SelectorScreen> {
       ),
     );
   }
-
-  // *************************** PRIVATE METHODS *************************** //
 
   _goToScreen(Widget screen) {
     Navigator.push(

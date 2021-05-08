@@ -4,7 +4,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 final materialTheme = ThemeData(
   primarySwatch: Colors.blue,
-  visualDensity: VisualDensity.adaptivePlatformDensity,
+  visualDensity: VisualDensity.adaptivePlatformDensity
 );
 
 final cupertinoTheme = CupertinoThemeData(
